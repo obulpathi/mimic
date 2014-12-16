@@ -61,11 +61,11 @@ class SwiftMock(object):
         modified = self.translate_tenant(tenant_id)
         return [
             Entry(modified, "object-store", "cloudFiles", [
-                Endpoint(modified, "ORD", text_type(uuid4()), prefix="v1"),
+                Endpoint(modified, text_type(uuid4()), "ORD", prefix="v1"),
             ])
         ]
 
-    def resource_for_region(self, region, uri_prefix, session_store):
+    def resource_for_region(self, uri_prefix, session_store, region=None):
         """
         Return an IResource implementing a public Swift region endpoint.
         """

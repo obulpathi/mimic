@@ -95,8 +95,12 @@ class MimicCore(object):
         :return: The full URI locating the service for that region
         :rtype: ``str``
         """
-        return str(URLPath.fromString(base_uri)
-                   .child("mimicking").child(service_id).child(region).child(""))
+        if region:
+            return str(URLPath.fromString(base_uri)
+                    .child("mimicking").child(service_id).child(region).child(""))
+        else:
+            return str(URLPath.fromString(base_uri)
+                    .child("mimicking").child(service_id).child(""))
 
     def entries_for_tenant(self, tenant_id, prefix_map, base_uri):
         """

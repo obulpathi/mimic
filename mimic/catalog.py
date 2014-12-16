@@ -10,18 +10,18 @@ class Endpoint(object):
     An endpoint represents a portion of a service catalog.
 
     :ivar str tenant_id: A tenant ID for this endpoint.
-    :ivar str region: The region name for this endpoint.
     :ivar str endpoint_id: The endpoint ID; used only in some auth responses,
         not the basic service catalog.
+    :ivar str region: The region name for this endpoint.
     :ivar str prefix: A prefix, usually a version number, for this endpoint.
     """
-    def __init__(self, tenant_id, region, endpoint_id, prefix=None):
+    def __init__(self, tenant_id, endpoint_id, region=None, prefix=None):
         """
         Create an endpoint for a service catalog entry.
         """
         self.tenant_id = tenant_id
-        self.region = region
         self.endpoint_id = endpoint_id
+        self.region = region
         self.prefix = prefix
 
     def url_with_prefix(self, uri_prefix):

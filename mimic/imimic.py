@@ -18,8 +18,7 @@ class IAPIMock(Interface):
             Mimic.
         """
 
-    def resource_for_region(region, uri_prefix,
-                            session_store):  # pragma:nocover
+    def resource(uri_prefix, session_store, region=None):
         """
-        Get a resource for the given region.
+        Get a resource.
         """

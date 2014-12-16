@@ -44,13 +44,13 @@ class LoadBalancerApi(object):
         return [
             Entry(tenant_id, "rax:load-balancer", "cloudLoadBalancers",
                   [
-                      Endpoint(tenant_id, region, text_type(uuid4()),
+                      Endpoint(tenant_id, text_type(uuid4()), region,
                                prefix="v2")
                       for region in self._regions
                   ])
         ]
 
-    def resource_for_region(self, region, uri_prefix, session_store):
+    def resource(self, uri_prefix, session_store, region=None):
         """
         Get an :obj:`twisted.web.iweb.IResource` for the given URI prefix;
         implement :obj:`IAPIMock`.
